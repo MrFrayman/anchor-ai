@@ -1,0 +1,1 @@
+For keeping third-party initializations, such as Prisma Client, Firebase setup, or Stripe Configuration.

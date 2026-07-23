@@ -1,0 +1,1 @@
+Pure TypeScript helper functions, like date formatters or math calculators.
