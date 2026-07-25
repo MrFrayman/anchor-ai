@@ -1,36 +1,22 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# anchor-ai
 
-## Getting Started
+I basically just took a Figma mockup for some enterprise AI landing page and pushed pixels until it looked like a real website. It's one of those light-mode, high-contrast, stripe style designs with a lot of specific spacing, so if you see some weird arbitrary Tailwind values in the code, blame the designer (or my commitment to the bit).
 
-First, run the development server:
+[Figma design →](https://www.figma.com/community/file/1657051188712932346/a-premium-dark-template-for-enterprise-ai-platforms-revenue-intelligence-tools-and-b2b-saas)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<!-- screenshot goes here -->
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## getting it to run
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+If you've touched a web project in the last five years, you know the drill. If not, here:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1.  **Install the weight of the world:** Run `npm install`. It'll take a minute to download half the internet.
+2.  **Fire it up:** Run `npm run dev` and then head over to `localhost:3000`.
 
-## Learn More
+It uses Next.js and Tailwind v4. If the styles look like they're having a mid-life crisis, make sure you're on a recent version of Node.
 
-To learn more about Next.js, take a look at the following resources:
+## some thoughts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **The pixels:** I tried to be faithful to the Figma, which means there's a lot of `text-[68px]` and `tracking-[-3.5px]` flying around. It's not "scalable" or "semantic" or whatever the LinkedIn influencers are preaching this week, but it matches the design.
+- **Responsiveness:** It works on my machine. I've poked at the mobile view a bit, but some of those massive hero headers might need another pass if they're still clipping on smaller screens.
+- **The Stack:** Standard Next.js setup. Nothing fancy, no over-engineered state management for a landing page that just needs to look pretty.

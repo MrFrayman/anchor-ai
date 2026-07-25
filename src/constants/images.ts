@@ -22,12 +22,27 @@ import Logo4 from "../../public/assets/logos/dummies/logoipsum-404.png";
 import Logo5 from "../../public/assets/logos/dummies/logoipsum-414.png";
 import Logo6 from "../../public/assets/logos/dummies/logoipsum-416.png";
 
+// Carousel Images
+import LivePipeline from "../../public/assets/images/carousel/card-1.png";
+import SystemHealth from "../../public/assets/images/carousel/card-2.png";
+import CustomerHealth from "../../public/assets/images/carousel/card-3.png";
+import RevenueForecast from "../../public/assets/images/carousel/card-4.png";
+import AnnualRecurringRevenue from "../../public/assets/images/carousel/card-5.png";
+
 // Declarations
 export const IMAGES = {
   RevenueChart,
   RevenueSignals,
   TeamKPIs,
   Galaxy,
+} as const;
+
+export const CAROUSEL_IMAGES = {
+  LivePipeline,
+  SystemHealth,
+  CustomerHealth,
+  RevenueForecast,
+  AnnualRecurringRevenue,
 } as const;
 
 export const BRAND = {
@@ -48,3 +63,4 @@ export const DUMMY = {
 export type ImageKey = keyof typeof IMAGES;
 export type BrandKey = keyof typeof BRAND;
 export type DummyKey = keyof typeof DUMMY;
+export type CarouselImageKey = keyof typeof CAROUSEL_IMAGES;

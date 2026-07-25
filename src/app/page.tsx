@@ -3,7 +3,10 @@ import { Brand } from "@/components/Home/Brand";
 import { Button } from "@/components/Button";
 import { Card } from "@/components/Home/Card";
 import { Features } from "@/components/Home/Features";
+import { Steps } from "@/components/Home/Steps";
+
 import { AboutUs } from "@/components/Home/Aboutus";
+import { UseCase } from "@/components/Home/UseCase";
 
 export default function Home() {
   return (
@@ -44,6 +47,8 @@ export default function Home() {
       <Card />
       <Features />
       <AboutUs />
+      <UseCase />
+      <Steps />
     </>
   );
 }
