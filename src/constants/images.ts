@@ -35,6 +35,9 @@ import CleanData from "../../public/assets/images/steps/clean-data.png";
 import ActivateAI from "../../public/assets/images/steps/ai-insights.png";
 import TakeAction from "../../public/assets/images/steps/workflow.png";
 
+// Testimonial Section
+import MichealChen from "../../public/assets/images/testimonials/micheal-chen-portrait.png";
+
 // Declarations
 export const IMAGES = {
   RevenueChart,
@@ -72,9 +75,14 @@ export const DUMMY = {
   Logo6,
 } as const;
 
+export const TESTIMONIALS = {
+  MichealChen,
+} as const;
+
 // Exports
 export type ImageKey = keyof typeof IMAGES;
 export type BrandKey = keyof typeof BRAND;
 export type DummyKey = keyof typeof DUMMY;
 export type CarouselImageKey = keyof typeof CAROUSEL_IMAGES;
 export type StepKey = keyof typeof STEPS;
+export type TestimonialKey = keyof typeof TESTIMONIALS;

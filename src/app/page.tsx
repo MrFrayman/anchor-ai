@@ -4,9 +4,9 @@ import { Button } from "@/components/Button";
 import { Card } from "@/components/Home/Card";
 import { Features } from "@/components/Home/Features";
 import { Steps } from "@/components/Home/Steps";
-
 import { AboutUs } from "@/components/Home/Aboutus";
 import { UseCase } from "@/components/Home/UseCase";
+import { Testimonials } from "@/components/Home/Testimonials";
 
 export default function Home() {
   return (
@@ -49,6 +49,7 @@ export default function Home() {
       <AboutUs />
       <UseCase />
       <Steps />
+      <Testimonials />
     </>
   );
 }
