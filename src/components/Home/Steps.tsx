@@ -1,99 +1,55 @@
 "use client";
 
 import Image from "next/image";
-import { DUMMY, IMAGES } from "../../constants/images";
+import { IMAGES, STEPS } from "../../constants/images";
 import { Button } from "../Button";
+import ProgressBar from "../ProgessBar";
 import { useState } from "react";
 
 export const Steps: React.FC = () => {
-  const [activeTab, setActiveTab] = useState("revenue-intelligence");
+  const [activeStep, setActiveStep] = useState("connect-your-systems");
 
-  const tabs = [
-    { id: "revenue-intelligence", label: "Revenue Intelligence" },
-    { id: "sales-automation", label: "Sales Automation" },
-    { id: "customer-insights", label: "Customer Insights" },
-    { id: "operations-forecasting", label: "Operations & Forecasting" },
+  const steps = [
+    { sn: "1", id: "connect-your-systems", label: "Connect your systems" },
+    { sn: "2", id: "unify-and-clean-data", label: "Unify & clean data" },
+    { sn: "3", id: "activate-ai-insights", label: "Activate AI insights" },
+    { sn: "4", id: "take-action-at-scale", label: "Take action at scale" },
   ];
 
-  const tabContent = {
-    "revenue-intelligence": {
-      image: IMAGES.RevenueChart,
-      heading: (
-        <>
-          Turn complex data <br /> into clear revenue decisions
-        </>
-      ),
+  const stepContent = {
+    "connect-your-systems": {
+      image: STEPS.Connections,
       description:
-        "Unify revenue data into one real-time view to surface insights, reduce risk, improve forecasting accuracy, and guide confident decisions.",
-      features: [
-        "Unified revenue dashboards",
-        "Real-time performance insights",
-        "Pipeline risk detection",
-        "AI-powered forecasts",
-      ],
-      cta: "Revenue Intelligence",
+        "Securely integrate your CRM, product, and data sources in minutes.",
     },
-    "sales-automation": {
-      image: IMAGES.RevenueChart,
-      heading: (
-        <>
-          Automate outreach <br /> without losing the human touch
-        </>
-      ),
+    "unify-and-clean-data": {
+      image: STEPS.CleanData,
       description:
-        "Trigger personalized sequences, auto-log activities, and keep your pipeline moving while reps focus on closing.",
-      features: [
-        "Smart email sequences",
-        "Auto-activity logging",
-        "Lead scoring & routing",
-        "Follow-up reminders",
-      ],
-      cta: "Sales Automation",
+        "Unify and clean your data to create a single source of truth for your revenue operations.",
     },
-    "customer-insights": {
-      image: IMAGES.RevenueChart,
-      heading: (
-        <>
-          Understand every customer <br /> at every stage
-        </>
-      ),
+    "activate-ai-insights": {
+      image: STEPS.ActivateAI,
       description:
-        "Aggregate behavioral data, support tickets, and engagement history into living profiles that power targeted action.",
-      features: [
-        "360° customer profiles",
-        "Health score tracking",
-        "Churn risk alerts",
-        "Expansion signals",
-      ],
-      cta: "Customer Insights",
+        "Activate AI insights to uncover hidden revenue opportunities",
     },
-    "operations-forecasting": {
-      image: IMAGES.RevenueChart,
-      heading: (
-        <>
-          Plan with precision <br /> forecast with confidence
-        </>
-      ),
+    "take-action-at-scale": {
+      image: STEPS.TakeAction,
       description:
-        "Replace spreadsheet guesswork with AI-driven models that learn from your data and adapt to market shifts.",
-      features: [
-        "AI revenue forecasting",
-        "Scenario modeling",
-        "Quota & capacity planning",
-        "Board-ready reports",
-      ],
-      cta: "Operations & Forecasting",
+        "Take action at scale with automated workflows and personalized campaigns.",
     },
   };
 
-  const content = tabContent[activeTab];
+  const content = stepContent[activeStep as keyof typeof stepContent];
+
+  const progessBarWidth =
+    (steps.findIndex((step) => step.id === activeStep) + 1) * 25;
 
   return (
     <section className="relative flex flex-col items-center justify-center h-[1019px] w-full overflow-hidden bg-[#f8f8f8]">
       <div className="relative flex flex-col items-center justify-center h-208.5 w-full overflow-hidden">
         <div className="h-[1000px] relative z-10 flex flex-col w-full text-left max-w-7xl py-[40px]">
-          {/* Header + Tabs */}
-          <div className="relative h-[257px] border-b-2 border-[#e6e6e6] mb-6">
+          {/* Header Section */}
+          <div className="relative h-[200px]">
             <h1 className="text-[#1a1a1a] text-[40px] font-medium leading-[1.2] tracking-[-3.5px] mb-4">
               From data to <br />{" "}
               <span className="text-[#666666]">
@@ -104,82 +60,43 @@ export const Steps: React.FC = () => {
               Integrate systems securely and activate AI insights across your
               revenue operations.
             </p>
-
-            <div className="pt-8 absolute bottom-0 left-0 right-0 w-full transition-all duration-300 text-[16px] font-normal leading-7">
-              {tabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`bg-white/0 h-[59px] border transition-colors duration-300 px-4 py-2 ${
-                    activeTab === tab.id
-                      ? "border-[#fb4a2f] text-[#fb4a24]"
-                      : "border-white/0 text-[#1a1a1a] hover:border-[#fb4a2f] hover:text-[#fb4a24]"
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
           </div>
 
-          {/* Tab Content */}
-          <div className="bg-white h-[548px] py-6 px-6">
-            <div className="flex gap-16">
-              <Image src={content.image} alt="" className="" />
-              <div className="align-center justify-center flex flex-col">
-                <h1 className="text-[#1a1a1a] text-[24px] font-medium leading-[1.2] tracking-[-1.2px] mb-3">
-                  {content.heading}
-                </h1>
-                <p className="text-[#666666] text-[16px] font-normal leading-7 w-132">
-                  {content.description}
-                </p>
+          {/* Tab Content Area */}
+          <div className="bg-white h-[552px] p-12">
+            <div className="flex gap-12 h-full">
+              {/* Left: Dynamic Image (Full Size as in Card.tsx) */}
+              <Image
+                src={content.image}
+                alt=""
+                className="transition-all duration-300 w-auto h-full"
+              />
 
-                <div className="pt-6 flex flex-col gap-3">
-                  {content.features.map((feature) => (
-                    <p
-                      key={feature}
-                      className="text-[#666666] text-[15px] font-normal leading-5 tracking-[-0.5px] flex items-center gap-3"
+              {/* Right: Steps Navigation */}
+              <div className="flex flex-col justify-between">
+                <div className="flex flex-col gap-1 mb-6">
+                  {steps.map((step) => (
+                    <button
+                      key={step.id}
+                      onMouseEnter={() => setActiveStep(step.id)}
+                      className={`bg-white/0 text-2xl w-max font-medium leading-5 tracking-[-1.2px] transition-colors duration-300 py-3 justify-start text-left ${
+                        activeStep === step.id
+                          ? "text-gray-900"
+                          : "text-gray-400 hover:text-gray-600"
+                      }`}
                     >
-                      <span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="#fb4a24"
-                          className="size-5"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </span>
-                      {feature}
-                    </p>
+                      {step.label}
+                    </button>
                   ))}
                 </div>
 
-                <Button
-                  variant=""
-                  size="medium"
-                  className="bg-[#1a1a1a] w-max h-12 mt-8"
-                >
-                  {content.cta}
-                  <span className="ml-2">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      className="size-5"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </span>
-                </Button>
+                {/* Active Step Description */}
+                <div className="flex flex-col gap-3.5">
+                  <p className="text-gray-600 text-[16px] font-normal leading-7 w-sm transition-all duration-800">
+                    {content.description}
+                  </p>
+                  <ProgressBar progress={progessBarWidth} width="w-lg" />
+                </div>
               </div>
             </div>
           </div>

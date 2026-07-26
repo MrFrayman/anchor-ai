@@ -29,6 +29,12 @@ import CustomerHealth from "../../public/assets/images/carousel/card-3.png";
 import RevenueForecast from "../../public/assets/images/carousel/card-4.png";
 import AnnualRecurringRevenue from "../../public/assets/images/carousel/card-5.png";
 
+// Steps
+import Connections from "../../public/assets/images/steps/connections.png";
+import CleanData from "../../public/assets/images/steps/clean-data.png";
+import ActivateAI from "../../public/assets/images/steps/ai-insights.png";
+import TakeAction from "../../public/assets/images/steps/workflow.png";
+
 // Declarations
 export const IMAGES = {
   RevenueChart,
@@ -43,6 +49,13 @@ export const CAROUSEL_IMAGES = {
   CustomerHealth,
   RevenueForecast,
   AnnualRecurringRevenue,
+} as const;
+
+export const STEPS = {
+  Connections,
+  CleanData,
+  ActivateAI,
+  TakeAction,
 } as const;
 
 export const BRAND = {
@@ -64,3 +77,4 @@ export type ImageKey = keyof typeof IMAGES;
 export type BrandKey = keyof typeof BRAND;
 export type DummyKey = keyof typeof DUMMY;
 export type CarouselImageKey = keyof typeof CAROUSEL_IMAGES;
+export type StepKey = keyof typeof STEPS;
